@@ -22,8 +22,8 @@ build: $(IHX)
 
 $(BUILD_DIR)/$(TARGET).ihx: $(TARGET).c
 	mkdir -p $(BUILD_DIR)
-	$(CC) -c $(CFLAGS) -I$(INCLUDEPATH) -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $(LIBSRC)
-	$(CC) $(CFLAGS) -I$(INCLUDEPATH) -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_beep.rel
+	$(CC) -c $(CFLAGS) -I$(INCLUDEPATH) -I. -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $(LIBSRC)
+	$(CC) $(CFLAGS) -I$(INCLUDEPATH) -I. -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_beep.rel
 
 %.hex: %.ihx
 	packihx $< > $@
